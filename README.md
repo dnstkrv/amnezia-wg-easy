@@ -44,15 +44,12 @@ $ docker run -d \
   -e WG_HOST=<b>🚨YOUR_SERVER_IP</b> \
   -e PASSWORD=<b>🚨YOUR_ADMIN_PASSWORD</b> \
   -v ~/.amnezia-wg-easy:/etc/wireguard \
-  -p 51820:51820/udp \
-  -p 51821:51821/tcp \
+  -e WG_PORT=46588 \ 
   --cap-add=NET_ADMIN \
   --cap-add=SYS_MODULE \
-  --sysctl="net.ipv4.conf.all.src_valid_mark=1" \
-  --sysctl="net.ipv4.ip_forward=1" \
   --device=/dev/net/tun:/dev/net/tun \
   --restart unless-stopped \
-  ghcr.io/spcfox/amnezia-wg-easy
+  ghcr.io/dnstkrv/amnezia-wg-easy:development
 </pre>
 
 > 💡 Replace `YOUR_SERVER_IP` with your WAN IP, or a Dynamic DNS hostname.
@@ -76,7 +73,7 @@ These options can be configured by setting environment variables using `-e KEY="
 | `PASSWORD` | - | `foobar123` | When set, requires a password when logging in to the Web UI. |
 | `WG_HOST` | - | `vpn.myserver.com` | The public hostname of your VPN server. |
 | `WG_DEVICE` | `eth0` | `ens6f0` | Ethernet device the wireguard traffic should be forwarded through. |
-| `WG_PORT` | `51820` | `12345` | The public UDP port of your VPN server. WireGuard will always listen on 51820 inside the Docker container. |
+| `WG_PORT` | `-` | `12345` | The public UDP port of your VPN server.  |
 | `WG_MTU` | `null` | `1420` | The MTU the clients will use. Server uses default WG MTU. |
 | `WG_PERSISTENT_KEEPALIVE` | `0` | `25` | Value in seconds to keep the "connection" open. If this value is 0, then connections won't be kept alive. |
 | `WG_DEFAULT_ADDRESS` | `10.8.0.x` | `10.6.0.x` | Clients IP address range. |
@@ -96,17 +93,8 @@ These options can be configured by setting environment variables using `-e KEY="
 | `H3` | `random` | `1234567893` | Underload packet magic header — UnderLoad packet header. Must be < uint_max. |
 | `H4` | `random` | `1234567894` | Transport packet magic header — header of the packet of the data packet. Must be < uint_max. |
 
-> If you change `WG_PORT`, make sure to also change the exposed port.
 
-## Updating
 
-To update to the latest version, simply run:
-
-```bash
-docker stop amnezia-wg-easy
-docker rm amnezia-wg-easy
-docker pull ghcr.io/spcfox/amnezia-wg-easy
-```
 
 ## Thanks
 
