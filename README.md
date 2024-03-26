@@ -43,8 +43,8 @@ $ docker run -d \
   -e LANG=en \
   -e WG_HOST=<b>🚨YOUR_SERVER_IP</b> \
   -e PASSWORD=<b>🚨YOUR_ADMIN_PASSWORD</b> \
+  -e WG_PORT=46588 \
   -v ~/.amnezia-wg-easy:/etc/wireguard \
-  -e WG_PORT=46588 \ 
   --cap-add=NET_ADMIN \
   --cap-add=SYS_MODULE \
   --device=/dev/net/tun:/dev/net/tun \
