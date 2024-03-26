@@ -7,7 +7,7 @@ jobs:
   deploy:
     name: Build & Deploy
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'spcfox'
+    if: github.repository_owner == 'dnstkrv'
     permissions:
       packages: write
       contents: read
@@ -34,4 +34,4 @@ jobs:
       with:
         push: true
         platforms: linux/amd64,linux/arm/v6,linux/arm/v7,linux/arm64/v8
-        tags: ghcr.io/spcfox/amnezia-wg-easy:development
+        tags: ghcr.io/dnstkrv/amnezia-wg-easy:development
