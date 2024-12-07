@@ -14,7 +14,7 @@
   "license": "GPL",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "debug": "^4.3.7",
+    "debug": "^4.4.0",
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "qrcode": "^1.5.4",
