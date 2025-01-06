@@ -18,7 +18,7 @@
     "express": "^4.21.2",
     "express-session": "^1.18.1",
     "qrcode": "^1.5.4",
-    "uuid": "^11.0.3"
+    "uuid": "^11.0.4"
   },
   "devDependencies": {
     "eslint-config-athom": "^3.1.3",
